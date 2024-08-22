@@ -9,7 +9,7 @@ ANIMATION_SPEED = 6
 Z_LAYERS = {
     'bg': 0,
     'clouds': 1,
-    'bg_tiles':2,
+    'bg tiles':2,
     'path': 3,
     'bg details': 4,
     'main': 5,
