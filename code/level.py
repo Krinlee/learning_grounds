@@ -74,7 +74,7 @@ class Level:
 
                     # animation speed
                     animation_speed = ANIMATION_SPEED if not 'palm' in obj.name else ANIMATION_SPEED + uniform(-1, 1)
-                    AnimatedSprite((obj.x, obj.y), frames, self.all_sprites, z, animation_speed)
+                    AnimatedSprite((obj.x, obj.y), frames, groups, z, animation_speed)
 
         # moving objects
         for obj in tmx_map.get_layer_by_name('Moving Objects'):
