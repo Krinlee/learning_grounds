@@ -3,6 +3,9 @@ from level import Level
 from pytmx.util_pygame import load_pygame
 from os.path import join
 from support import *
+from data import Data
+from debug import debug
+from ui import UI
 
 class Game:
     def __init__(self):
@@ -12,8 +15,10 @@ class Game:
         self.clock = pygame.time.Clock()
         self.import_assets()
 
+        self.ui = UI(self.font, self.ui_frames)
+        self.data = Data(self.ui)
         self.tmx_maps = {0: load_pygame(join('.', 'data', 'levels', 'omni.tmx'))}
-        self.current_stage = Level(self.tmx_maps[0], self.level_frames)
+        self.current_stage = Level(self.tmx_maps[0], self.level_frames, self.data)
 
     def import_assets(self):
         self.level_frames = {
@@ -37,6 +42,17 @@ class Game:
             'pearl': import_image('.', 'graphics', 'enemies', 'bullets', 'pearl'),
             'items': import_sub_folders('.', 'graphics', 'items' ),
             'particle': import_folder('.', 'graphics', 'effects', 'particle'),
+            'water_top': import_folder('.', 'graphics', 'level', 'water', 'top'),
+            'water_body': import_image('.', 'graphics', 'level', 'water', 'body'),
+            'bg_tiles': import_folder_dict('.', 'graphics', 'level', 'bg', 'tiles'),
+            'cloud_small': import_folder('.', 'graphics', 'level', 'clouds', 'small'),
+            'cloud_large': import_image('.', 'graphics', 'level', 'clouds', 'large_cloud'),
+        }
+
+        self.font = pygame.font.Font(join('.', 'graphics', 'ui', 'runescape_uf.ttf'), 40)
+        self.ui_frames = {
+            'heart': import_folder('.', 'graphics', 'ui', 'heart'),
+            'coin': import_image('.', 'graphics', 'ui', 'coin'),
         }
 
     def run(self):
@@ -48,7 +64,10 @@ class Game:
                     sys.exit
             
             self.current_stage.run(dt)
+            self.ui.update(dt)
+            #debug(self.data.coins)
             pygame.display.update()
+            
 
 if __name__ == '__main__':
     game = Game()
