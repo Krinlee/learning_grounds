@@ -113,7 +113,7 @@
   <object id="15" name="player" gid="223" x="645.62" y="389.485" width="74" height="56"/>
   <object id="27" name="palm_bg" gid="217" x="768" y="448" width="128" height="128"/>
   <object id="43" name="palm_bg_left" gid="228" x="245" y="562" width="104" height="106"/>
-  <object id="44" name="palm_bg_right" gid="229" x="866" y="496" width="104" height="106"/>
+  <object id="44" name="palm_bg_right" gid="229" x="866" y="552" width="104" height="106"/>
   <object id="65" name="saw" x="64" y="576" width="64" height="64">
    <properties>
     <property name="speed" type="int" value="0"/>
