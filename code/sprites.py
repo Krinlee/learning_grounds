@@ -223,3 +223,11 @@ class Icon(pygame.sprite.Sprite):
             self.rect.center += self.direction * self.speed * dt
         self.get_state()
         self.animate(dt)
+
+class PathSprite(Sprite):
+    def __init__(self, pos, surf, groups, level):
+        super().__init__(pos, surf, groups, Z_LAYERS['path'])
+        self.level = level
+
+
+
